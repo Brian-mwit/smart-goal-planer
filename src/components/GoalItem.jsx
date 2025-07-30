@@ -1,8 +1,9 @@
+
 import ProgressBar from './ProgressBar';
 
-function GoalItem({ goal, onDelete }) {
+function GoalItem({ goal, onDelete, onDeposit }) {
   const progress = Math.min(
-    (goal.savedAmount / goal.targetAmount) * 100, 
+    (goal.savedAmount / goal.targetAmount) * 100,
     100
   );
   const remaining = goal.targetAmount - goal.savedAmount;
@@ -13,22 +14,26 @@ function GoalItem({ goal, onDelete }) {
         <h3>{goal.name}</h3>
         <span className="goal-category">{goal.category}</span>
       </div>
+
       <p className="goal-deadline">Deadline: {goal.deadline}</p>
-      
+
       <ProgressBar progress={progress} />
-      
+
       <div className="goal-amounts">
         <span>Saved: ${goal.savedAmount.toLocaleString()}</span>
         <span>Target: ${goal.targetAmount.toLocaleString()}</span>
         <span>Remaining: ${remaining.toLocaleString()}</span>
       </div>
-      
-      <button 
-        onClick={() => onDelete(goal.id)}
-        className="delete-btn"
-      >
-        Delete
-      </button>
+
+      {/* Action buttons */}
+      <div className="goal-actions">
+        <button onClick={() => onDeposit(goal)} className="deposit-btn">
+          Deposit
+        </button>
+        <button onClick={() => onDelete(goal.id)} className="delete-btn">
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

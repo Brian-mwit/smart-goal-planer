@@ -1,6 +1,7 @@
+
 import GoalItem from './GoalItem';
 
-function GoalList({ goals, onDelete }) {
+function GoalList({ goals, onDelete, onDeposit }) {
   if (goals.length === 0) {
     return <p className="no-goals">No goals yet. Add your first goal!</p>;
   }
@@ -8,10 +9,11 @@ function GoalList({ goals, onDelete }) {
   return (
     <div className="goal-list">
       {goals.map(goal => (
-        <GoalItem 
-          key={goal.id} 
-          goal={goal} 
+        <GoalItem
+          key={goal.id}
+          goal={goal}
           onDelete={onDelete}
+          onDeposit={onDeposit}  
         />
       ))}
     </div>
