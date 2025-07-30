@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState(null);
   const [depositTarget, setDepositTarget] = useState(null); 
 
-  const API_URL = `${import.meta.env.VITE_BACKEND_URL}/goals`;
+  const API_URL = `https://smart-goal-planer-ybhd.onrender.com/goals`;
 
   
   useEffect(() => {
